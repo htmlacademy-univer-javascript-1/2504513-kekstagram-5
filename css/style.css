@@ -1198,7 +1198,8 @@ main {
  */
 
 .error,
-.success {
+.success,
+.server_error {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -1236,12 +1237,35 @@ main {
   border-radius: 10px;
 }
 
+.server_error__inner{
+  position: relative;
+  width: 600px;
+  padding: 50px 20px;
+  padding-top: 150px;
+  margin-top: 200px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Open Sans", "Arial", sans-serif;
+  text-align: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: #c92d2d;
+
+  background-color: #3c3614;
+  border-radius: 10px;
+}
+
 .success__inner {
   padding: 100px 20px;
   padding-bottom: 75px;
 }
 
-.error__title {
+.error__title,
+.server_error__title {
   position: relative;
 
   margin: 0;
@@ -1257,7 +1281,8 @@ main {
   font-size: 32px;
 }
 
-.error__title::before {
+.error__title::before,
+.server_error__title::before {
   content: "";
   position: absolute;
 
@@ -1275,7 +1300,8 @@ main {
 }
 
 .error__button,
-.success__button {
+.success__button,
+.server_error__button {
   padding: 5px 10px;
 
   color: #ffffff;
@@ -1289,12 +1315,14 @@ main {
 .error__button:hover,
 .error__button:focus,
 .success__button:hover,
-.success__button:focus {
+.success__button:focus,
+.server_error__button:hover {
   opacity: 0.8;
 }
 
 .error__button:active,
-.success__button:active {
+.success__button:active,
+.server_error__button:active {
   opacity: 0.6;
 }
 
