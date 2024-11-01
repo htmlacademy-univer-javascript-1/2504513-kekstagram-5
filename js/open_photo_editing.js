@@ -17,6 +17,7 @@ upload.addEventListener('change', (event) => {
 function window_Editing(file){
     overlay.classList.remove('hidden');
     body.classList.add('modal-open');
+    overlay.focus();
     if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -25,14 +26,18 @@ function window_Editing(file){
         reader.readAsDataURL(file);
     }
     
-    document.addEventListener('keydown', (event) => {
+    overlay.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' || event.key === 'Esc') {
-            const activeElement = document.activeElement;
-            if (activeElement !== inputHashtag && activeElement !== inputComment) {
+            let activeElement = document.activeElement;
+            console.log(activeElement === inputHashtag)
+            if (activeElement === inputHashtag || activeElement === inputComment) {
+                console.log('Хуй')
+                event.preventDefault();
+            } else {
                 resetForm();
             }
         }
-    }, { once: true });
+    });
     upload_cancel.addEventListener('click', () => {
         resetForm();
     });
