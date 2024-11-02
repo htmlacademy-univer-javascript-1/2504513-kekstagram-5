@@ -5,4 +5,5 @@ import './validation.js';
 import './effect_editing.js';
 import './import_data.js';
 import './data_rendering.js';
-import './big_photo.js'
+import './big_photo.js';
+import './filter.js'

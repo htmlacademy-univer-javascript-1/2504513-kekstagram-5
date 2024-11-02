@@ -2,12 +2,13 @@ import { showServerErrorMessage } from "./status_massage.js";
 
 const url = "https://29.javascript.htmlacademy.pro/kekstagram/data";
 
-const fetchData = async () => {
+let data;
+
+export const fetchData = async () => {
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error("Ошибка запроса");
-    const data = await response.json();
-    return data;
+    data = await response.json();
   } catch {
     showServerErrorMessage();
     setInterval(() => {
@@ -16,4 +17,5 @@ const fetchData = async () => {
   }
 };
 
-export { fetchData };
+await fetchData();
+export { data };
