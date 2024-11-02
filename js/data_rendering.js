@@ -9,20 +9,20 @@ import { data, fetchData } from './import_data.js';
 const picturesContainer = document.querySelector(".pictures");
 const pictureTemplate = document.getElementById("picture").content;
 
-function randomNumber(min, max, was_number) {
+function randomNumber(min, max, wasNumber) {
   min = Math.ceil(min);
   max = Math.floor(max);
   let b = Math.floor(Math.random() * (max - min + 1)) + min;
-  if (!was_number.includes(b)){
+  if (!wasNumber.includes(b)){
     return b;
   } else{
-    return randomNumber(min, max, was_number);
+    return randomNumber(min, max, wasNumber);
   }
 }
 
 export function renderPhoto(filter) {
-  const all_picture = picturesContainer.querySelectorAll('.picture');
-  all_picture.forEach((element) =>{
+  const allPicture = picturesContainer.querySelectorAll('.picture');
+  allPicture.forEach((element) =>{
     element.remove();
   });
   if (filter === 'default') {
@@ -37,10 +37,10 @@ export function renderPhoto(filter) {
     });
   } else if (filter === 'random'){
     const pictures = [];
-    const was_number = [];
+    const wasNumber = [];
     for (let i = 0; i < 10; i++){
-      let a = randomNumber(0,data.length-1, was_number);
-      was_number.push(a);
+      let a = randomNumber(0,data.length-1, wasNumber);
+      wasNumber.push(a);
       pictures.push(data[a]);
     }
     pictures.forEach((photo) => {
@@ -53,8 +53,8 @@ export function renderPhoto(filter) {
       picturesContainer.appendChild(pictureElement);
     });
   } else{
-    const sorted_data = [...data].sort((a,b) => b.comments.length - a.comments.length);
-    sorted_data.forEach((photo) => {
+    const sortedData = [...data].sort((a,b) => b.comments.length - a.comments.length);
+    sortedData.forEach((photo) => {
       const pictureElement = pictureTemplate.cloneNode(true);
       pictureElement.querySelector('.picture').id = photo.id;
       pictureElement.querySelector(".picture__img").src = photo.url;

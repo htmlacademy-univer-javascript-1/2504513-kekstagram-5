@@ -1,33 +1,33 @@
 // Редактирование фото
 
 // Маштаб
-const scale_smaller = document.querySelector('.scale__control--smaller');
-const scale_bigger = document.querySelector('.scale__control--bigger');
-const scale_value = document.querySelector('.scale__control--value');
-export const img_preview = document.querySelector('.img-upload__preview img');
+const scaleSmaller = document.querySelector('.scale__control--smaller');
+const scaleBigger = document.querySelector('.scale__control--bigger');
+const scaleValue = document.querySelector('.scale__control--value');
+export const imgPreview = document.querySelector('.img-upload__preview img');
 
-const scale_step = 25;
-const scale_max = 100;
-const scale_min = 25;
-const transformValue = img_preview.style.transform;
-let current_scale = transformValue ? parseFloat(transformValue.match(/scale((.+))/)[1]) : 1;
+const scaleStep = 25;
+const scaleMax = 100;
+const scaleMin = 25;
+const transformValue = imgPreview.style.transform;
+let currentScale = transformValue ? parseFloat(transformValue.match(/scale((.+))/)[1]) : 1;
 
 export function updateScale(scale) {
-    current_scale = scale;
-    scale_value.value = `${scale * 100}%`;
-    img_preview.style.transform = `scale(${scale})`;
+    currentScale = scale;
+    scaleValue.value = `${scale * 100}%`;
+    imgPreview.style.transform = `scale(${scale})`;
 }
 
-scale_smaller.addEventListener('click', () => {
-    if (current_scale * 100 > scale_min) {
-        current_scale -= scale_step / 100;
-        updateScale(current_scale);
+scaleSmaller.addEventListener('click', () => {
+    if (currentScale * 100 > scaleMin) {
+        currentScale -= scaleStep / 100;
+        updateScale(currentScale);
     }
 });
 
-scale_bigger.addEventListener('click', () => {
-    if (current_scale * 100 < scale_max) {
-        current_scale += scale_step / 100;
-        updateScale(current_scale);
+scaleBigger.addEventListener('click', () => {
+    if (currentScale * 100 < scaleMax) {
+        currentScale += scaleStep / 100;
+        updateScale(currentScale);
     }
 });

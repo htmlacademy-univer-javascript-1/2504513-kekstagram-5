@@ -2,10 +2,10 @@ import { resetForm } from "./update_form.js";
 
 // Открытие закрытие окна редактирование фото
 const upload = document.getElementById('upload-file');
-const upload_cancel = document.getElementById('upload-cancel');
+const uploadCancel = document.getElementById('upload-cancel');
 export const overlay = document.querySelector('.img-upload__overlay');
 export const body = document.body;
-const img_preview = document.querySelector('.img-upload__preview img');
+const imgPreview = document.querySelector('.img-upload__preview img');
 const inputHashtag = document.querySelector('.text__hashtags');
 const inputComment = document.querySelector('.text__description');
 
@@ -21,7 +21,7 @@ function window_Editing(file){
     if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
-            img_preview.src = e.target.result;
+            imgPreview.src = e.target.result;
         };
         reader.readAsDataURL(file);
     }
@@ -36,7 +36,7 @@ function window_Editing(file){
             }
         }
     });
-    upload_cancel.addEventListener('click', () => {
+    uploadCancel.addEventListener('click', () => {
         resetForm();
     });
 }
