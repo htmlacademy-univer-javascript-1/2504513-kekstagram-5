@@ -64,7 +64,6 @@ export function renderPhoto(filter) {
       picturesContainer.appendChild(pictureElement);
     });
   }
-  console.log('sadasdasd')
   const event = new CustomEvent('picturesUpdated');
   document.dispatchEvent(event);
 }

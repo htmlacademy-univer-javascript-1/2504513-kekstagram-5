@@ -16,7 +16,6 @@ export function updateScale(scale) {
     current_scale = scale;
     scale_value.value = `${scale * 100}%`;
     img_preview.style.transform = `scale(${scale})`;
-    console.log(img_preview.style.transform)
 }
 
 scale_smaller.addEventListener('click', () => {

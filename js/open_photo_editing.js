@@ -29,9 +29,7 @@ function window_Editing(file){
     overlay.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' || event.key === 'Esc') {
             let activeElement = document.activeElement;
-            console.log(activeElement === inputHashtag)
             if (activeElement === inputHashtag || activeElement === inputComment) {
-                console.log('Хуй')
                 event.preventDefault();
             } else {
                 resetForm();
