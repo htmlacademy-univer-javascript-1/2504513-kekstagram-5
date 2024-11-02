@@ -1,4 +1,5 @@
 import { data, fetchData } from "./import_data.js";
+import { renderPhoto } from "./data_rendering.js";
 
 const section_photo = document.querySelector('.big-picture');
 const big_picture = document.querySelector('.big-picture__img img');
@@ -18,13 +19,16 @@ let big_now = null;
 
 (async () => {
   await fetchData();
-  const pictures = document.querySelectorAll('.picture');
-  for (let i = 0; i < pictures.length; i++){
-    pictures[i].addEventListener('click', ()=>{
-      open_big_photo(pictures[i]);
+  document.addEventListener('picturesUpdated', () => {
+    const pictures = document.querySelectorAll('.picture');
+    pictures.forEach((picture) => {
+      picture.addEventListener('click', () => {
+        open_big_photo(picture);
+      });
     });
-  }
+  });  
   comments_loader.addEventListener('click', upload_comments);
+  renderPhoto('default');
 })();
 
 function upload_comments(){

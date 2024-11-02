@@ -4,7 +4,6 @@ import { data, fetchData } from './import_data.js';
   await fetchData();
   const filterTitle = document.querySelector('.img-filters');
   filterTitle.classList.remove('img-filters--inactive');
-  renderPhoto('default');
 })();
 
 const picturesContainer = document.querySelector(".pictures");
@@ -54,7 +53,7 @@ export function renderPhoto(filter) {
       picturesContainer.appendChild(pictureElement);
     });
   } else{
-    const sorted_data = data.sort((a,b) => b.comments.length - a.comments.length);
+    const sorted_data = [...data].sort((a,b) => b.comments.length - a.comments.length);
     sorted_data.forEach((photo) => {
       const pictureElement = pictureTemplate.cloneNode(true);
       pictureElement.querySelector('.picture').id = photo.id;
@@ -65,4 +64,7 @@ export function renderPhoto(filter) {
       picturesContainer.appendChild(pictureElement);
     });
   }
+  console.log('sadasdasd')
+  const event = new CustomEvent('picturesUpdated');
+  document.dispatchEvent(event);
 }
