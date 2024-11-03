@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>Кекстаграм</title>
+  <script src="./vendor/pristine/pristine.min.js"></script>
+  <link rel="stylesheet" href="./vendor/nouislider/nouislider.css">
+  <script src="./vendor/nouislider/nouislider.js"></script>
+
 </head>
 
 <body>
@@ -30,7 +34,7 @@
       <section class="img-upload">
         <div class="img-upload__wrapper">
           <h2 class="img-upload__title  visually-hidden">Загрузка фотографии</h2>
-          <form class="img-upload__form" id="upload-select-image" autocomplete="off">
+          <form class="img-upload__form" action="https://29.javascript.htmlacademy.pro/kekstagram" enctype="multipart/form-data" method="post" id="upload-select-image" autocomplete="off">
 
             <!-- Изначальное состояние поля для загрузки изображения -->
             <fieldset class="img-upload__start">
@@ -39,7 +43,7 @@
             </fieldset>
 
             <!-- Форма редактирования изображения -->
-            <div class="img-upload__overlay  hidden">
+            <div class="img-upload__overlay  hidden" tabindex="1">
               <div class="img-upload__wrapper">
                 <div class="img-upload__preview-container">
 
@@ -136,7 +140,7 @@
     </section>
 
     <!-- Полноэкранный показ изображения -->
-    <section class="big-picture  overlay  hidden">
+    <section class="big-picture  overlay  hidden" tabindex="1">
       <h2 class="big-picture__title  visually-hidden">Просмотр фотографии</h2>
       <div class="big-picture__preview">
 
@@ -154,15 +158,11 @@
           </div>
 
           <!-- Комментарии к изображению -->
-          <div class="social__comment-count">5 из <span class="comments-count">125</span> комментариев</div>
+          <div class="social__comment-count"><span class="current_comment">0</span> из <span class="comments-count">125</span> комментариев</div>
           <ul class="social__comments">
-            <li class="social__comment">
+            <li class="social__comment hidden">
               <img class="social__picture" src="img/avatar-4.svg" alt="Аватар комментатора фотографии" width="35" height="35">
               <p class="social__text">Мега фото! Просто обалдеть. Как вам так удалось?</p>
-            </li>
-            <li class="social__comment">
-              <img class="social__picture" src="img/avatar-3.svg" alt="Аватар комментатора фотографии" width="35" height="35">
-               <p class="social__text">Да это фоташоп!!!!!!!!</p>
             </li>
           </ul>
 
@@ -217,6 +217,16 @@
     </section>
   </template>
 
+  <!-- Сообщение с ошибкой загрузки данных с сервера -->
+  <template id="server_error">
+    <section class="server_error">
+      <div class="server_error__inner">
+        <h2 class="server_error__title">Ошибка загрузки данных</h2>
+        <button type="button" class="server_error__button">Попробовать ещё раз</button>
+      </div>
+    </section>
+  </template>
+
   <!-- Сообщение об успешной загрузке изображения -->
   <template id="success">
     <section class="success">
@@ -226,6 +236,6 @@
       </div>
     </section>
   </template>
-
+    <script src="./js/main.js" type="module" defer></script>
 </body>
 </html>
