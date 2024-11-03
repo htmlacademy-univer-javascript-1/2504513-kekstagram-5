@@ -1,11 +1,9 @@
-// HTML-элементы
 const imagePreview = document.querySelector('.img-upload__preview img');
 const effectLevelValue = document.querySelector('.effect-level__value');
 const effectLevelSlider = document.querySelector('.effect-level__slider');
 const effectsContainer = document.querySelector('.effects');
 const effectLevelFieldset = document.querySelector('.img-upload__effect-level');
 
-// Настройки эффектов
 const effects = {
   none: { filter: '', range: [0, 0], step: 1 },
   chrome: { filter: 'grayscale', range: [0, 1], step: 0.1, unit: '' },
@@ -15,7 +13,6 @@ const effects = {
   heat: { filter: 'brightness', range: [1, 3], step: 0.1, unit: '' },
 };
 
-// Инициализация слайдера
 noUiSlider.create(effectLevelSlider, {
   range: { min: 0, max: 1 },
   start: 1,
@@ -23,7 +20,6 @@ noUiSlider.create(effectLevelSlider, {
   connect: 'lower',
 });
 
-// Функция обновления фильтра на изображении
 export function updateEffect(value, effect) {
   effectLevelValue.value = value;
   imagePreview.style.filter = effects[effect].filter
@@ -31,7 +27,6 @@ export function updateEffect(value, effect) {
     : '';
 }
 
-// Обработчик выбора эффекта
 effectsContainer.addEventListener('change', (evt) => {
   const effect = evt.target.value;
   if (effect === 'none') {
@@ -48,7 +43,6 @@ effectsContainer.addEventListener('change', (evt) => {
   }
 });
 
-// Обновление фильтра при изменении слайдера
 effectLevelSlider.noUiSlider.on('update', (values) => {
   const effect = document.querySelector('input[name="effect"]:checked').value;
   updateEffect(values[0], effect);

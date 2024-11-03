@@ -52,8 +52,6 @@ export function showErrorMessage(){
   }, { once: true });
 }
 
-// Эскейп убирает всё, нужно также как-то перехватить это
-
 //Сообщение об ошибке сервера :(
 
 const serverErrorTemplate = document.getElementById('server_error')
@@ -61,7 +59,6 @@ const serverErrorTemplate = document.getElementById('server_error')
 export function showServerErrorMessage(){
   const serverErrorMessage = serverErrorTemplate.content.cloneNode(true);
   const serverErrorElement = serverErrorMessage.querySelector('.server_error');
-  const serverErrorValue = serverErrorMessage.querySelector('.server_error__inner');
   body.appendChild(serverErrorElement);
 
   serverErrorElement.querySelector('.server_error__button').addEventListener('click', () => {
